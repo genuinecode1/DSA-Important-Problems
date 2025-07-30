@@ -1,0 +1,66 @@
+/*
+
+Author :- Aditya Mani Tripathi
+leetcode username - genuine_code
+email - aadiitripathii46@gmail.com
+institute - UIET CSJM UNIVERSITY KANPUR
+
+*/
+
+
+
+// code :-
+
+
+class Solution {
+    void print(vector<int> v){
+        for(auto i:v){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int row = matrix.size();
+        int col= matrix[0].size();
+
+        int left = 0;
+        int right = col-1;
+        int bottom = row-1;
+        int up = 0;
+        vector<int> v;
+        int ele = row*col;
+        while(left<=right && up<=bottom){
+            
+            for(int i= left ;i<=right;i++){
+                v.push_back(matrix[up][i]);
+            }
+            up++;
+            if(v.size()==ele){
+                break;
+            }
+            for(int i = up ;i <=bottom;i++){
+                v.push_back(matrix[i][right]);
+            }
+            right--;
+            if(v.size()==ele){
+                break;
+            }
+            for(int i = right ;i >=left;i--){
+                v.push_back(matrix[bottom][i]);
+            }
+            bottom--;
+            if(v.size()==ele){
+                break;
+            }
+            for(int i = bottom ;i >=up;i--){
+                v.push_back(matrix[i][left]);
+            }
+            left++;;
+            if(v.size()==ele){
+                break;
+            }
+        }
+        return v;
+    }
+};
